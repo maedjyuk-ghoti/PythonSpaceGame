@@ -1,6 +1,10 @@
 # PythonSpaceGame
 A simple 2D space game written in python.
 
+<b>To Run</b>
+
+Execute <code>python main.py</code> at the command line.
+
 <b>Audio Engine</b>
 
 The audio for this game is created in supercollider. Open Sound Control (OSC) messages are sent to the supercollider server (scsynth) to control all of the sounds heard in game.
