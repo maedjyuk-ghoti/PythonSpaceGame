@@ -1,7 +1,7 @@
 """ mine.py """
 import pygame
 import src.factory as factory
-import src.audio as Audio
+#import src.audio as Audio
 
 
 class Mine(pygame.sprite.Sprite):
@@ -10,14 +10,14 @@ class Mine(pygame.sprite.Sprite):
         """ init """
         pygame.sprite.Sprite.__init__(self)
         self.image_file = "mine"
-        self.audio_engine = Audio.Audio()
+#        self.audio_engine = Audio.Audio()
 
         #Get these from xml
         self.image_size = (40, 40)
         self.frames = 2
         self.speed = speed
         self.loc = list(loc)
-        self.audio_address = "/mine"
+#        self.audio_address = "/mine"
 
         #Probably shouldn't touch these
         self.img_list = []
@@ -78,7 +78,7 @@ class Mine(pygame.sprite.Sprite):
             self.image = self.img_list[self.index]
 
         # Add variables to audio bundle
-        self.audio_engine.add_to_bundle(self.audio_address + "/location/x",
-            self.loc[0])
-        self.audio_engine.add_to_bundle(self.audio_address + "/location/y",
-            self.loc[1])
+#        self.audio_engine.add_to_bundle(self.audio_address + "/location/x",
+#            self.loc[0])
+#        self.audio_engine.add_to_bundle(self.audio_address + "/location/y",
+#            self.loc[1])

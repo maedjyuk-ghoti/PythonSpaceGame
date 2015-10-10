@@ -148,6 +148,7 @@ class GameManager(object):
 
         # Handle a collision with player if it happened
         if pygame.sprite.spritecollide(self.player, self.enemy_group, True):
+            self.audio_engine.send_message("/explosion")
             print("YOU WERE HIT")
             self.on_exit()
 
@@ -168,6 +169,7 @@ class GameManager(object):
             for exploding in self.explosions:
                 exploding.update()
                 exploding.draw()
+            self.audio_engine.send_message("/explosion")
 
         # Check number of enemies
         if not len(self.enemy_group):

@@ -1,11 +1,11 @@
 """ audio.py """
-from src.lib.OSC import OSCClient, OSCMessage, OSCBundle
-import src.borg as Borg
+from lib.OSC import OSCClient, OSCMessage, OSCBundle
+import borg as Borg
 
 
 class Audio(Borg.Borg):
     """ controls osc messages """
-    def __init__(self, address="localhost", port=7110):
+    def __init__(self, address="localhost", port=57121):
         """ init """
         self.serv_addr = address
         self.serv_port = port
@@ -25,6 +25,11 @@ class Audio(Borg.Borg):
     def get_server_port(self):
         """ gets server port """
         return self.serv_port
+
+    def send_message(self, address, data=""):
+        msg = OSCMessage(self.root_address + address)
+        msg.append(data)
+        self.client.send(msg)
 
     def create_bundle(self):
         """ Create an osc bundle, wiping out the old one if it existed """

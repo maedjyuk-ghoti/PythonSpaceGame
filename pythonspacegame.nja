@@ -1,5 +1,5 @@
 {
-  "mainFile": "main.py", 
+  "mainFile": "D:/Documents/PythonSpaceGame/main.py", 
   "use-tabs": false, 
   "venv": "", 
   "relatedProjects": [], 
@@ -11,7 +11,7 @@
   "additional_builtins": [], 
   "programParams": "", 
   "indentation": 4, 
-  "PYTHONPATH": "", 
+  "PYTHONPATH": "\nC:\\\\Windows\\\\system32\\\\python27.zip\nC:\\\\Python27\\\\DLLs\nC:\\\\Python27\\\\lib\nC:\\\\Python27\\\\lib\\\\plat-win\nC:\\\\Python27\\\\lib\\\\lib-tk\nC:\\\\Python27\nC:\\\\Python27\\\\lib\\\\site-packages", 
   "supported-extensions": [
     ".py", 
     ".html", 

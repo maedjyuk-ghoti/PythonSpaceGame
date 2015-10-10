@@ -1,7 +1,7 @@
 """ player.py """
 import pygame
 import src.factory as Factory
-import src.audio as Audio
+#import src.audio as Audio
 
 MIN_SPIN = 1.0
 DELAY = 20
@@ -13,14 +13,14 @@ class Player(pygame.sprite.Sprite):
         """ init """
         pygame.sprite.Sprite.__init__(self)
         self.image_file = "player"
-        self.audio_engine = Audio.Audio()
+#        self.audio_engine = Audio.Audio()
 
         #Get these from xml
         self.image_size = (60, 30)
         self.frames = 4
         self.speed = list((0, 0))
         self.delta_y = 3
-        self.audio_address = "/player"
+#        self.audio_address = "/player"
 
         #Probably shouldn't touch these
         pygame.sprite.Sprite.__init__(self)
@@ -97,7 +97,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.topleft = self.loc
 
         # Add variables to audio bundle
-        self.audio_engine.add_to_bundle(self.audio_address + "/speed/x",
-            self.speed[0])
-        self.audio_engine.add_to_bundle(self.audio_address + "/speed/y",
-            self.speed[1])
+#        self.audio_engine.add_to_bundle(self.audio_address + "/speed/x",
+#            self.speed[0])
+#        self.audio_engine.add_to_bundle(self.audio_address + "/speed/y",
+#            self.speed[1])
