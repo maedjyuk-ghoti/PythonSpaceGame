@@ -139,7 +139,7 @@ class GameManager(object):
                 bul.update()
 
         # Send new audio bundle out
-        self.audio_engine.send()
+#        self.audio_engine.send()
 
         # Draw all the things
         self.background.draw(self.screen)
