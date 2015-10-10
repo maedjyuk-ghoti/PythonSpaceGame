@@ -129,6 +129,7 @@ class GameManager(object):
             self.player.move_up()
         if self.keys[self.player_key_shoot]:
             self.shoot()
+            self.audio_engine.send_message("/shotsfired")
 
         # Update all the things
         self.background.scroll(2)
