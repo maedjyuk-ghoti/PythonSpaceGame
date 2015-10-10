@@ -139,7 +139,7 @@ class GameManager(object):
                 bul.update()
 
         # Send new audio bundle out
-#        self.audio_engine.send()
+        self.audio_engine.send()
 
         # Draw all the things
         self.background.draw(self.screen)
@@ -165,11 +165,11 @@ class GameManager(object):
                             enemy.rect, (enemy.loc[0], enemy.loc[1]),
                             enemy.speed[0] / 4.0)
                         self.explosions.append(exploded)
+                        self.audio_engine.send_message("/explosion")
         if len(self.explosions):
             for exploding in self.explosions:
                 exploding.update()
                 exploding.draw()
-            self.audio_engine.send_message("/explosion")
 
         # Check number of enemies
         if not len(self.enemy_group):

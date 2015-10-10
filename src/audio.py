@@ -1,11 +1,11 @@
 """ audio.py """
-from lib.OSC import OSCClient, OSCMessage, OSCBundle
-import borg as Borg
+from src.lib.OSC import OSCClient, OSCMessage, OSCBundle
+import src.borg as Borg
 
 
 class Audio(Borg.Borg):
     """ controls osc messages """
-    def __init__(self, address="localhost", port=57121):
+    def __init__(self, address="localhost", port=57120):
         """ init """
         self.serv_addr = address
         self.serv_port = port
