@@ -65,7 +65,7 @@ class GameManager(object):
         print(("ticks:", ticks))
         print(("fps:", self.frames / (ticks * 0.001)))
         self.first_run = True
-        self.audio_engine.quit_server()
+#        self.audio_engine.quit_server()
         # Save whatever needs saving from the gamescreen (score most likely)
         # need a way to go back to the main menu or just stop entirely
         # in a more glorious/graceful way than the this
@@ -78,6 +78,7 @@ class GameManager(object):
         ticks = self.bullet_cur_ticks - prev_ticks
         self.bullet_elapsed += ticks
         if self.bullet_elapsed > self.bullet_delay:
+            self.audio_engine.send_message("/shotsfired")
             fired = False
             player_loc = self.player.get_loc()
             player_size = self.player.get_size()
@@ -129,7 +130,6 @@ class GameManager(object):
             self.player.move_up()
         if self.keys[self.player_key_shoot]:
             self.shoot()
-            self.audio_engine.send_message("/shotsfired")
 
         # Update all the things
         self.background.scroll(2)
@@ -149,7 +149,7 @@ class GameManager(object):
 
         # Handle a collision with player if it happened
         if pygame.sprite.spritecollide(self.player, self.enemy_group, True):
-            self.audio_engine.send_message("/explosion")
+            self.audio_engine.send_message("/crash")
             print("YOU WERE HIT")
             self.on_exit()
 

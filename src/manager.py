@@ -4,6 +4,7 @@ import sys
 import src.menu as Menu
 import src.inputbox as Inputbox
 import src.gamemanager as Gamemanager
+import src.audio as Audio
 
 pygame.init()
 
@@ -19,6 +20,8 @@ class Manager(object):
         self.views = None
         self.curr_view = None
         self.clock = pygame.time.Clock()
+        self.audio_engine = Audio.Audio()
+        self.audio_engine.send_message("/gamestart")
 
     def set_view(self, view):
         """ Sets the menu view """

@@ -27,6 +27,7 @@ class Audio(Borg.Borg):
         return self.serv_port
 
     def send_message(self, address, data=""):
+        """ Sends a simple message to the audio server """
         msg = OSCMessage(self.root_address + address)
         msg.append(data)
         self.client.send(msg)
