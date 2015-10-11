@@ -30,7 +30,7 @@ SynthDef('explosion', {
 SynthDef('shotsfired', {
 	arg pitch = 200;
 	var sound = SinOsc.ar(pitch, mul:0.2);
-	var linen = Env.linen(sustainTime:0.5);
+	var linen = Env.linen(sustainTime:0.1);
 	var env = EnvGen.kr(linen, doneAction:2);
 	Out.ar([0,1], sound * env);
 }).add;
@@ -44,7 +44,7 @@ s.quit
 // test space, not officially implemented yet. Subject to deletion
 (
 OSCdef(\gamestartlistener, {
-	Synth(o.play)
+	o.play
 }, "/spacegame/gamestart");
 )
 
@@ -60,7 +60,7 @@ SynthDef(\sin, {
     sine = SinOsc.ar(freq, 0, amp);
     env = EnvGen.kr(Env.perc(0.01, dur), doneAction:2);
     panner = Pan2.ar(sine, pan, env);
-    Out.ar(0, panner);
+	Out.ar([0, 1], panner);
 }).add
 )
 
@@ -77,7 +77,7 @@ o = Pbind(
 
 (
 OSCdef(\crashlistener, {
-	Synth(c.play)
+	c.play
 }, "/spacegame/crash");
 )
 (
