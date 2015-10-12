@@ -1,36 +1,37 @@
 // Maintenance
-s.boot
-NetAddr.localAddr
+s.boot;
+NetAddr.localAddr;
 
 // Bind addresses to synths
 (
 OSCdef(\explosionlistener, {
-	Synth('explosion',[\pitch:50.rrand(600)])
+	Synth(\explosion,[\pitch:200])
 }, "/spacegame/explosion");
 )
 
 (
 OSCdef(\shotsfiredlistener, {
-	Synth('shotsfired',[\pitch:700])
+	Synth(\shotsfired,[\pitch:1000])
 }, "/spacegame/shotsfired");
 )
 
 // Synths
+// TODO Better explosion sound.
 (
-SynthDef('explosion', {
+SynthDef(\explosion, {
 	arg pitch = 200;
 	var sound = SinOsc.ar(pitch, mul:0.2);
-	var linen = Env.linen();
+	var linen = Env.perc();
 	var env = EnvGen.kr(linen, doneAction:2);
 	Out.ar([0,1], sound * env);
 }).add;
 )
 
 (
-SynthDef('shotsfired', {
+SynthDef(\shotsfired, {
 	arg pitch = 200;
-	var sound = SinOsc.ar(pitch, mul:0.2);
-	var linen = Env.linen(sustainTime:0.1);
+	var sound = SinOsc.ar(XLine.kr(pitch, pitch - 800, 0.1, doneAction:2), mul:0.2);
+	var linen = Env.linen();
 	var env = EnvGen.kr(linen, doneAction:2);
 	Out.ar([0,1], sound * env);
 }).add;
