@@ -5,7 +5,7 @@ import src.borg as Borg
 
 class Audio(Borg.Borg):
     """ controls osc messages """
-    def __init__(self, address="localhost", port=57120):
+    def __init__(self, address="localhost", port=57121):
         """ init """
         self.serv_addr = address
         self.serv_port = port
