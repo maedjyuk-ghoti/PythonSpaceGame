@@ -7,13 +7,15 @@ f = { |msg, time, addr|
     }
 };
 thisProcess.addOSCRecvFunc(f);
-);
+)
+// get the port that supercollider is listening on
 NetAddr.localAddr
-// stop posting.
+
+// stop posting
 thisProcess.removeOSCRecvFunc(f);
 
 //simple page 2 sounds
-// pushes
+// push#listeners
 (
 OSCdef(\push1listener, { |msg|
 	if (msg[1] == 1) {
@@ -109,9 +111,13 @@ OSCdef(\push16listener, { |msg|
 	}
 }, "/2/push16");
 
-// toggles
-OSCdef(\toggle1listener, {
-	Synth()
+// toggle#listeners
+OSCdef(\toggle1listener, { |msg|
+	if (msg[1] == 1) {
+		t.set(\amp, 0.1);
+	} {
+		t.set(\amp, 0);
+	}
 }, "/2/toggle1");
 
 OSCdef(\toggle2listener, {
@@ -126,6 +132,7 @@ OSCdef(\toggle4listener, {
 	Synth()
 }, "/2/toggle4");
 
+//Sounds
 // player shoot
 SynthDef(\shotsfired, {
 	arg pitch = 1000;
@@ -169,4 +176,23 @@ SynthDef(\explode, {
 	Out.ar([0, 1], amp*ae*sig);
 }).add;
 
+// raindrop
+t = SynthDef(\raindrop, {
+	arg amp = 0;
+	var gaus, osc;
+	gaus = {WhiteNoise.ar}.dup(12).sum;
+	gaus = LPF.ar(BPF.ar(gaus, 50, 1/0.4), 500);
+
+	//
+	osc = SinOsc.ar(gaus.linlin(-1, 1, 40, 80)) * gaus.squared * 10;
+	osc = (osc - 0.35).max(0);
+
+	2.do{
+		osc = HPF.ar(osc, 500);
+	};
+
+	Out.ar([0, 1], osc.dup*amp);
+
+}).play;
 )
+
