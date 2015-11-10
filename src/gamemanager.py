@@ -49,9 +49,8 @@ class GameManager(object):
 
         #Enemy creation
         self.enemy_group = pygame.sprite.Group()
-        self.num_enemies = 0
-        while self.num_enemies < random.randint(20, 40):
-            self.num_enemies += 1
+        self.num_enemies = random.randint(20, 40)
+        for i in range(self.num_enemies):
             self.enemy_group.add(Mine.Mine(list((random.randint(960, 1560),
                         random.randint(20, 460))),
                         list((random.randint(-7, 0), 0))))
@@ -140,7 +139,7 @@ class GameManager(object):
                 bul.update()
 
         # Send new audio bundle out
-        self.audio_engine.send()
+#        self.audio_engine.send()
 
         # Draw all the things
         self.background.draw(self.screen)
